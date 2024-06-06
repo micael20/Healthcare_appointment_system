@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Healthcare Appointment System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {% load static %}
+    <script src="{% static 'appointments/js/script.js' %}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Doctors</h1>
+        <ul class="list-group">
+            {% for doctor in doctors %}
+                <li class="list-group-item">
+                    <strong>{{ doctor.user.get_full_name }}</strong> - {{ doctor.specialty }}
+                    <a href="{% url 'appointments:book_appointment' doctor.id %}" class="btn btn-primary btn-sm float-right">Book Appointment</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+
